@@ -73,10 +73,11 @@ for dataset_alias in sorted(common_elements):
     path_to_prediction = os.path.join(args.predictions, dataset_alias, 'Annotations')
 
     # Benchmarking (Thanks to the code of hkchengrex)
-    benchmark(list((path_to_dataset)), 
-              list((path_to_prediction)), 
-              args.strict, 
-              args.num_processes, 
-              verbose=True, 
-              skip_first_and_last=not args.do_not_skip_first_and_last_frame)
+    benchmark(
+        list((path_to_dataset)), 
+        list((path_to_prediction)), 
+        args.strict, 
+        args.num_processes, 
+        verbose=True, 
+        skip_first_and_last=not args.do_not_skip_first_and_last_frame)
 
