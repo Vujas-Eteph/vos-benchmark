@@ -1,5 +1,6 @@
 """
 Goal: Automatic benchmarking of a model's predictions with DAVIS-type metrics (J&F, J, and F).
+Quick use: python benchmarking_api.py --predictions [path/to/output/folder/with/all/results]
 
 by Stéphane Vujasinovic
 """
