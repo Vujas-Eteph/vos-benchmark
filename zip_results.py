@@ -25,8 +25,7 @@ from argparse import ArgumentParser
 ### - GLOBAL VARIABLES ---
 # Define the source folders and target folders
 SOURCE_FOLDERS = ["y18-val", "y19-val", "lvos-test", "mose-val"]
-
-SUBFOLDER_TO_ZIP = "Annotations"
+SUBFOLDER_TO_ZIP = ["Annotations","Annotations","Annotations",""]
 TARGET_ZIP_FOLDERS = ["y18_val_submission.zip", "y19_val_submission.zip", "lvos_test_submission.zip", "mose_val_submission.zip"]
 
 
@@ -72,10 +71,10 @@ def main():
     # Start the zipping !
     total_iterations = len(SOURCE_FOLDERS)
     with tqdm.tqdm(total=total_iterations, desc="Zipping") as pbar:
-        for idx, (src_f, trgt_f) in enumerate(zip(SOURCE_FOLDERS, TARGET_ZIP_FOLDERS)):
+        for idx, (src_f, sub_f, trgt_f) in enumerate(zip(SOURCE_FOLDERS, SUBFOLDER_TO_ZIP, TARGET_ZIP_FOLDERS)):
             if idx != 3:
                 continue
-            source_with_subfolder = os.path.join(src_f, SUBFOLDER_TO_ZIP)
+            source_with_subfolder = os.path.join(src_f, sub_f)
             
             # Add args.path to the meta data
             meta_data = list((src_f, source_with_subfolder, trgt_f))
