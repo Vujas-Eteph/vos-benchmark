@@ -79,7 +79,6 @@ def benchmark(gt_roots,
                             This is used by DAVIS 2017 in their semi-supervised evaluation.
                             It should be disabled for unsupervised evaluation.
     """
-
     assert len(gt_roots) == len(mask_roots)
     single_dataset = (len(gt_roots) == 1)
 

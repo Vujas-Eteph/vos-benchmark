@@ -46,7 +46,7 @@ parser.add_argument(
     '-y',
     '--yamlConfig',
     type = str,
-    default='config_copy.yaml',
+    default='config.yaml',
     help=
     'Align the alias of a dataset to the corresponding name of the dataset and the path.')
 args = parser.parse_args()
@@ -75,8 +75,8 @@ for dataset_alias in sorted(common_elements):
 
     # Benchmarking (Thanks to the code of hkchengrex)
     benchmark(
-        list((path_to_dataset)), 
-        list((path_to_prediction)), 
+        [path_to_dataset], 
+        [path_to_prediction], 
         args.strict, 
         args.num_processes, 
         verbose=True, 

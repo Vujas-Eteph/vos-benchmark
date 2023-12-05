@@ -1,13 +1,15 @@
 '''
-Goal: Automatically ZIP the results for YouTuve VOS 2018 and 2019.
+Goal: Automatically ZIP the results for YouTuve VOS 2018/2019 (val/test), LVOS (test) and MOSE (val/test).
 
 Comments: 
 - The ZIP format is required by the evaluation servers on CodaLab.
 - Server are :
         - YouTubeVOS 2018 : https://codalab.lisn.upsaclay.fr/competitions/7685#learn_the_details
         - YouTubeVOS 2019 : https://codalab.lisn.upsaclay.fr/competitions/6066#learn_the_details
+        - LVOS : https://codalab.lisn.upsaclay.fr/competitions/8767#learn_the_details
+        - MOSE: https://codalab.lisn.upsaclay.fr/competitions/10703#results
 
-Quick use: python prepare_YVOS_submission.py --path [path/to/the/resuls] --num_workers [# of cores to use]
+Quick use: python zip_results.py --path [path/to/the/resuls] --num_workers [# of cores to use]
 
 by Stéphane Vujasinovic
 '''
@@ -22,9 +24,10 @@ from argparse import ArgumentParser
 
 ### - GLOBAL VARIABLES ---
 # Define the source folders and target folders
-SOURCE_FOLDERS = ["y18-val", "y19-val"]
+SOURCE_FOLDERS = ["y18-val", "y19-val", "lvos-test", "mose-val"]
+
 SUBFOLDER_TO_ZIP = "Annotations"
-TARGET_ZIP_FOLDERS = ["y18_val_submission.zip", "y19_val_submission.zip"]
+TARGET_ZIP_FOLDERS = ["y18_val_submission.zip", "y19_val_submission.zip", "lvos_test_submission.zip", "mose_val_submission.zip"]
 
 
 ### - FUNCTIONS ---
@@ -69,7 +72,9 @@ def main():
     # Start the zipping !
     total_iterations = len(SOURCE_FOLDERS)
     with tqdm.tqdm(total=total_iterations, desc="Zipping") as pbar:
-        for (src_f, trgt_f) in zip(SOURCE_FOLDERS, TARGET_ZIP_FOLDERS):
+        for idx, (src_f, trgt_f) in enumerate(zip(SOURCE_FOLDERS, TARGET_ZIP_FOLDERS)):
+            if idx != 3:
+                continue
             source_with_subfolder = os.path.join(src_f, SUBFOLDER_TO_ZIP)
             
             # Add args.path to the meta data
