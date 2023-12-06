@@ -18,6 +18,7 @@ parser.add_argument(
     '-p',
     '--predictions',
     type=str,
+    required=True,
     help='Folder containing all the predictions of a model for all datasets.')
 parser.add_argument(
     '-d',
@@ -43,8 +44,8 @@ parser.add_argument(
     'They should not be skipped in unsupervised evaluation.',
     action='store_true')
 parser.add_argument(
-    '-y',
-    '--yamlConfig',
+    '-c',
+    '--config',
     type = str,
     default='config.yaml',
     help=
@@ -53,7 +54,7 @@ args = parser.parse_args()
 
 
 ### - PRE-PROCESSING ---
-with open(args.yamlConfig, 'r') as file:
+with open(args.config, 'r') as file:
     try:
         yaml_data = yaml.safe_load(file)['datasets']
     except yaml.YAMLError as e:
