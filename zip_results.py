@@ -3,7 +3,7 @@ Goal: Automatically ZIP the results for YouTuve VOS 2018/2019 (val/test), LVOS (
 
 Comments: 
 - The ZIP format is required by the evaluation servers on CodaLab.
-- Server are :
+- Servers are located @:
         - YouTubeVOS 2018 : https://codalab.lisn.upsaclay.fr/competitions/7685#learn_the_details
         - YouTubeVOS 2019 : https://codalab.lisn.upsaclay.fr/competitions/6066#learn_the_details
         - LVOS : https://codalab.lisn.upsaclay.fr/competitions/8767#learn_the_details
