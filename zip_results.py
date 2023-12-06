@@ -12,6 +12,10 @@ Comments:
 Quick use: python zip_results.py --path [path/to/the/resuls] --num_workers [# of cores to use]
 
 by Stéphane Vujasinovic
+
+TODO:
+- [] Add suffix or prefix to the outputs name to now which method produced it.
+- [] Exclude some type of files name, based on a list in the config.yaml file. (i.e., *.csv files) 
 '''
 
 ### - IMPORTS ---
